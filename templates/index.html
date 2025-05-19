@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ronaldo Clicker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<script>
+  const user = localStorage.getItem("username");
+  if (!user) {
+    window.location.href = "{{ url_for('login_page') }}";
+  }
+</script>
+
+<script>
+  function logout() {
+    localStorage.removeItem("username");
+    window.location.href = "{{ url_for('login_page') }}";
+  }
+</script>
+
+  <div class="page">
+    <div class="page__nav">
+      <ul>
+        <li class="nav__item"><a href="{{ url_for('index_page') }}">Main</a></li>
+        <li class="nav__item"><a href="{{ url_for('shop_page') }}">Shop</a></li>
+        <li class="nav__item"><a href="{{ url_for('credits_page') }}">Credits</a></li>
+        <li class="nav__item"><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </div>
+    
+
+    <div class="page__main">
+      <div class="viewer__container">
+        <div class="main__viewer">
+          <img src="{{ url_for('static', filename='uploads/sui.ico') }}" alt="Ronaldo Image" id="ronaldo-image">
+        </div>
+        <div class="viewer__stats">
+          <span class="stats__number stats__number--cps">CPS: <span id="cps">0</span></span>
+          <span class="stats__number">Total Clicks: <span id="total-clicks">0</span></span>
+        </div>
+        <!-- Reset Button -->
+        <button id="reset-button">Reset Game</button>
+      </div>  
+
+      <!-- Chat Sidebar -->
+      <div class="page__chat">
+        <div class="chat__header">Chat</div>
+        <div class="chat__messages" id="chat-messages"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shop - Ronaldo Clicker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="page">
+    <div class="page__nav">
+      <ul>
+        <li class="nav__item"><a href="{{ url_for('index_page') }}">Main</a></li>
+        <li class="nav__item"><a href="{{ url_for('shop_page') }}">Shop</a></li>
+        <li class="nav__item"><a href="{{ url_for('credits_page') }}">Credits</a></li>
+        <li class="nav__item"><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </div>
+    <div class="page__main">
+      <h2>Shop</h2>
+      <div id="shop-items" class="shop__container"></div>
+    </div>
+  </div>
+  <script>
+    function logout() {
+      localStorage.removeItem("username");
+      window.location.href = "{{ url_for('login_page') }}";
+    }
+  </script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+  
+</body>
+</html>

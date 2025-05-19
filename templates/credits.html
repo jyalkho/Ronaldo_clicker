@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Credits - Ronaldo Clicker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="page">
+    <div class="page__nav">
+      <ul>
+        <li class="nav__item"><a href="{{ url_for('index_page') }}">Main</a></li>
+        <li class="nav__item"><a href="{{ url_for('shop_page') }}">Shop</a></li>
+        <li class="nav__item"><a href="{{ url_for('credits_page') }}">Credits</a></li>
+        <li class="nav__item"><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </div>
+    <div class="page__main">
+      <div class="credits">
+        <h2>Credits</h2>
+        <ul>
+          <li>Game by Jonas</li>
+          <li>Images: Ronaldo meme</li>
+          <li>Special thanks to Kuben VGS</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script>
+    function logout() {
+      localStorage.removeItem("username");
+      window.location.href = "{{ url_for('login_page') }}";
+    }
+  </script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
