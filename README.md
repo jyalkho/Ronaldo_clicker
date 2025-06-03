@@ -1,126 +1,109 @@
-## Ronaldo Clicker 👆
+## Ronaldo Clicker
+Ronaldo Clicker er et klikkbasert spill der du samler poeng ved å klikke på Ronaldo-bildet. 
+Kjøp verktøy og oppgraderinger for å øke poengsummen din!
 
-Ronaldo Clicker er et klikkbasert spill der du samler poeng ved å klikke på Ronaldo-bildet. Kjøp verktøy og oppgraderinger for å øke poengsummen din!
+Det er laget i Flask (Python), med MariaDB som database. 
+Spillet viser mine ferdigheter innen programmering, drift og brukerstøtte.
 
+## Hvordan spille?
+Klikk på Ronaldo-bildet → få poeng.
+Bruk poengene dine til å kjøpe verktøy i shoppen.
+Følg scoren din og prøv å nå målet: 2000 poeng!
 
-## Beskrivelse
-Ronaldo Clicker er et enkelt spill der du klikker på Ronaldo-bildet for å samle poeng. Du kan også kjøpe oppgraderinger i shoppen for å øke poengsummen automatisk.
-
-## Hvordan spille 🎮
-Klikk på Ronaldo-bildet for å samle poeng.
-Bruk poengene til å kjøpe verktøy i shoppen.
-Følg med på scoren din og prøv å få så høy score som mulig.
-Goal : 2000
-
+## Teknologi jeg har brukt
+Backend : Python + Flask
+Database : MariaDB
+Frontend : HTML, CSS, JavaScript
+Sikkerhet : Passord hashet med bcrypt
+Versjonskontroll : Git og GitHub
 
 ## Installasjon
 Krav:
-Python,
-MariaDB,
+Python 3.x
+MariaDB
 Flask
 
+## Trinn-for-trinn:
+1. Klon repoet
+```python
+git clone https://github.com/ditt-brukernavn/ronaldo-clicker.git
+cd ronaldo-clicker
+```
 
-### Trinn
-## 1. **Klon repoet**:
-   ```bash
-   git clone https://github.com/ditt-brukernavn/ronaldo-clicker.git
-   cd ronaldo-clicker
- ```
+## 2. Installer denne:
+```python
+pip install -r requirements.txt
+```
 
-## 2. Installer denne :
-   ```bash
-   pip install -r requirements.txt
- ```
 
-## 3. Konfigurer databasen :
-Opprett en MariaDB-database og endre innstillinger i config.py-filen:
+## 3. Konfigurer databasen
+Åpne config.py og endre disse linjene:
 ```python
 DB_HOST = 'localhost'
 DB_USER = 'din_brukernavn'  # Bytt ut med ditt brukernavn
 DB_PASSWORD = 'din_passord'  # Bytt ut med ditt passord
-DB_NAME = 'ronaldo_clicker
+DB_NAME = 'ronaldo_clicker'
 ```
 
-## 4. Start serveren :
-Start Flask med kommando:
+## 4. Opprett database og tabeller:
 ```python
-python app.py
+CREATE DATABASE ronaldo_clicker;
+
+USE ronaldo_clicker;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE scores (
+    user_id INT,
+    score INT DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
 ```
 
-## 5. Åpne nettsiden din :
-Gå til http://localhost:5000 i nettsiden din for å spille spillet.
+## 5. Åpne spillet i nettleseren
+Gå til:
+👉 http://localhost:5000
 
 
+## 📋 Dokumentasjon
+## 🎯 Mål med prosjektet
+Jeg ville lage et enkelt og morsomt klikkespill i Flask med følgende funksjoner:
 
+Bruker kan logge inn og få sin egen score.
+Lagring av data i MariaDB-database.
+En "shop" hvor man kan kjøpe automatiske klikk.
+Sikker lagring av passord med hashing.
 
+Lage dokumentasjon og laste opp til GitHub.
 
+## 🗓️ Planlegging
+## Uke 1–2
+Starte med enkle klikkfunksjoner.
+Lage knapp som gir poeng.
+Vise score på nettsiden.
 
+## Uke 3–4
+Legge til registrering og pålogging.
+Sette opp MariaDB og lagre data.
+Hashe passord med bcrypt.
 
+## Uke 5–6
+Lage en shop med oppgraderinger.
+Automatisk poeng-inntekt.
+Gjøre designet mer brukervennlig.
 
+## Uke 7–8
+Teste spillet med ekte bruker.
+Lage denne README-en og legge til GitHub.
 
+## 🧪 Brukertesting – Robin
+Robin testet spillet og sa dette:
 
-
-
-
-..............................................................................
-
-
-
-##Dokumentasjon : 
-
-##🎮 Ronaldo Clicker – Årsoppgave (Robin)
-Ronaldo Clicker er et klikkespill der man samler poeng ved å klikke på et bilde av Ronaldo. Etter hvert kan man bruke poengene til å kjøpe oppgraderinger som gir flere poeng automatisk.
-
-##🎯 Mål
-Lage et enkelt og morsomt klikkespill i Flask.
-
-1. Bruker skal kunne logge inn og få sin egen score.
-
-2. database MariaDB for å lagre brukere og poeng.
-
-3. Legge til en shop der man kan kjøpe automatiske klikk.
-
-4. Sørge for sikker lagring av passord (hashing).
-
-5. Lage README og dokumentasjon for prosjektet.
-
-6. Gjøre prosjektet tilgjengelig på GitHub.
-
-##🔧 Plan for ukene framover
-Uke 1–2:
-
-Starte med et enkelt klikkespill i Flask.
-
-Lage en knapp som gir poeng ved klikk.
-
-Vise poengsummen på skjermen.
-
-##Uke 3–4:
-
-Legge til pålogging/registrering med e-post og passord.
-
-Sette opp database med brukere og poeng.
-
-Bruke bcrypt til å hashe passord.
-
-##Uke 5–6:
-
-Lage en shop der man kan bruke poeng.
-
-Implementere auto-click funksjoner.
-
-Gjøre designet mer oversiktlig og lett å bruke.
-
-##Uke 7–8:
-
-Brukertesting og små forbedringer.
-
-Lage README, FAQ og laste opp til GitHub.
-
-##🧪 Brukertesting – Tilbakemelding fra Robin
-Robin testet spillet mitt og syntes det var skikkelig kult. Han sa at det var gøy å klikke på Ronaldo og at det var motiverende å samle poeng.
-
-Han likte at det var lett å forstå hva man skulle gjøre og at designet var enkelt og ryddig. Han syntes det var smart at man kunne kjøpe oppgraderinger og at poengene lagres når man logger inn.
-
-##🔒 Personvern
-Passordene skal ikke lagres i klartekst, kun som hash. Det skal heller ikke vises sensitiv informasjon, og designet skal være lesbart og lett å bruke.
+Han syntes det var gøy å klikke på Ronaldo 😄
+Lett å forstå hva man skal gjøre.
+Likte at scoren lagres når man logger inn.
+Foreslo flere oppgraderinger og flerbruker i fremtiden.
